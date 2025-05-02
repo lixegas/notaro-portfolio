@@ -33,7 +33,7 @@ export default function Home() {
         </div>
         <div className="w-full lg:w-1/2 h-full flex items-center justify-center lg:justify-end">
           <div className="rounded-full border-yellow-500 border-2 bg-yellow-300/10 p-3">
-            <Image className="rounded-full" width={450} height={450} alt="" src={"/images/logo.jpg"}/>
+            <Image className="rounded-full" width={450} height={450} alt="" src={"images/logo.jpg"}/>
           </div>
         </div>
       </div>
