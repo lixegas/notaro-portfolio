@@ -5,8 +5,9 @@ const nextConfig = {
     output: 'export',
     distDir: 'dist',
     images: {
-        unoptimized: true,
+      unoptimized: true,
     },
   };
-   
-  module.exports = nextConfig
+  
+  module.exports = nextConfig;
+  
