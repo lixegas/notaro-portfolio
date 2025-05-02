@@ -16,7 +16,7 @@ export default function Contact() {
        <div className="w-full">
          <p className="text-3xl font-bold">{formatText(CONTACT_CONTENT.title)}</p>
        </div>
-       <div className="flex gap-7 lg:gap-14 items-start flex-col-reverse lg:flex-row w-full">
+       <div className="flex gap-7 lg:gap-14 items-start flex-col lg:flex-row w-full">
          <p className="whitespace-pre-wrap">{formatText(CONTACT_CONTENT.description)}</p>
          <div className="w-1/2 space-y-4">
            {
@@ -28,7 +28,7 @@ export default function Contact() {
                   target="_blank"
                   rel="noopener noreferrer"
                  >
-                  <contact.icon className="w-6 h-6 text-yellow-500"/>
+                  <contact.icon className="w-6 h-6 text-yellow-500 shrink-0"/>
                   <p className="text-2xl font-light group-hover:underline">{contact.content}</p>
                 </a>
               ))
