@@ -16,7 +16,7 @@ const defaultDescription = "Peppino Notaro's portfolio."
 export const metadata: Metadata = {
   title: defaultTitle,
   description: defaultDescription,
-  metadataBase: new URL(BASE_URL || ""),
+  metadataBase: new URL(BASE_URL || 'https://lixegas.github.io/portfolio/'),
   twitter: {
     title: defaultTitle,
     description: defaultDescription
