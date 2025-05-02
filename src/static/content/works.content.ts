@@ -21,7 +21,7 @@ const WORK_CONTENT: WorkContent = {
     {
       title: "Ecommerce",
       description: "Ecommerce distribuito con architettura a microservizi per scalabilità e gestione di milioni di richieste giornaliere",
-      githubTo: "https://github.com/lixegas/carparts-be",
+      githubTo: "https://github.com/lixegas/ecommerce",
       image: "images/ecommerce.png",
       technologies: ["Spring Boot", "MySQL", "Aws", "Redis"]
     }
