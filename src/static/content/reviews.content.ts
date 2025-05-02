@@ -14,7 +14,7 @@ const REVIEW_CONTENT: ReviewContent = {
   description: "Scopri cosa dicono i clienti di **me**",
   reviews: [
     {
-      content: "\“Peppino è un ragazzo straordinario, molto perspicace, che riesce a trovare sempre la soluzione a tutto in pochissimo tempo. É stato sempre un piacere lavorare con lui.\”",
+      content: "Peppino è un ragazzo straordinario, molto perspicace, che riesce a trovare sempre la soluzione a tutto in pochissimo tempo. É stato sempre un piacere lavorare con lui.",
       signature: "Christopher Domenicano, fullstack developer con 2+ anni di esperienza"
     }
   ]
