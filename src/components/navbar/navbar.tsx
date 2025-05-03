@@ -18,7 +18,7 @@ export default function Navbar() {
         <div className="flex items-center gap-2">
           <ThemeButton/>
           <a
-            href="/curriculum.pdf"
+            href="curriculum.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="text-black! hidden lg:flex"
