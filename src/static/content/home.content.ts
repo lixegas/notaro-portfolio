@@ -7,7 +7,7 @@ interface HomeContent {
 
 const HOME_CONTENT: HomeContent = {
   title: "Ciao, sono\n**Peppino Notaro**",
-  description: "Sono uno **sviluppatore** Fullstack che ama creare **soluzioni sbalorditive** e **innovative** con il meglio delle tecnologie **moderne**.",
+  description: "**Sviluppatore Fullstack** orientato all’innovazione, con esperienza nella progettazione e realizzazione di **soluzioni digitali avanzate** basate sulle più **moderne tecnologie**.",
   contantCaption: "Contattami",
   seeMyWorksCaption: "Guarda i miei lavori",
 }
