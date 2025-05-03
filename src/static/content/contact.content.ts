@@ -22,7 +22,7 @@ const CONTACT_CONTENT: ContactContent = {
   {
     icon: MdEmail,
     to: "mailto:peppino.notaro@gmail.com",
-    content: "peppino.notaro@gmail.com"
+    content: "peppino.tech05@gmail.com"
   },
   {
     icon: FaLinkedin,
