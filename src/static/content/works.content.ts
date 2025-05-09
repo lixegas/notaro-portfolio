@@ -36,14 +36,14 @@ const WORK_CONTENT: WorkContent = {
       title: "VitoBot",
       description: "VitoBot è un bot per Discord che aiuta a gestire server Minecraft auto-ospitati, monitorando l'IP del server di hosting e una lista di server Minecraft selezionati dall'amministratore.",
       githubTo: "https://github.com/ikiwq/vito-bot",
-      image: "images/nodisponibile.png",
+      image: "images/vitobot1.png",
       technologies: ["Typescript", "Discord.js"]
     },
     {
       title: "Auth system",
       description: "Sistema di autenticazione basato su token che garantisce accesso sicuro e scalabile. Gli utenti ricevono un token dopo l'accesso, da usare per accedere alle risorse protette. Il token è rinnovabile e sostituisce la gestione delle sessioni lato server.",
       githubTo: "https://github.com/lixegas/java-spring-jwt-auth",
-      image: "images/nodisponibile.png",
+      image: "images/auth.png",
       technologies: ["Java", "Spring Security"]
     }
   ]

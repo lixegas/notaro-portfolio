@@ -17,7 +17,7 @@ interface ContactContent {
 
 const CONTACT_CONTENT: ContactContent = {
   title: "**Contattami** subito!",
-  description: "Sono un ragazzo molto **dinamico** a cui piace mettersi in gioco e risolvere i problemi piú difficili.\nCerco nuove opportunità per lavorare su progetti **innovativi** in cui contribuire con le mie abilitá e la mia passione.\nCosa aspetti? **Contattami!**",
+  description: "Sono una persona dinamica, motivata e orientata alla **risoluzione** di problemi complessi. Amo mettermi in gioco e affrontare nuove sfide con entusiasmo e determinazione.Cerco opportunità stimolanti in cui poter contribuire concretamente con le mie competenze e la mia **passione** per l’innovazione. Hai un progetto interessante? **Parliamone!**",
   contacts: [
   {
     icon: MdEmail,
