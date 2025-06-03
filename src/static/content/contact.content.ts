@@ -21,7 +21,7 @@ const CONTACT_CONTENT: ContactContent = {
   contacts: [
   {
     icon: MdEmail,
-    to: "mailto:peppino.notaro@gmail.com",
+    to: "mailto:peppino.tech05@gmail.com",
     content: "peppino.tech05@gmail.com"
   },
   {
