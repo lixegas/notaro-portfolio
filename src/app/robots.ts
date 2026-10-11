@@ -1,6 +1,6 @@
 export const dynamic = 'force-static';
 
-import { BASE_URL } from '@/constants/common';
+import { SITE_URL } from '@/constants/common';
 import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
@@ -11,6 +11,6 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
       },
     ],
-    sitemap: `${BASE_URL}/sitemap.xml`,
+    sitemap: `${SITE_URL}/sitemap.xml`,
   };
 }

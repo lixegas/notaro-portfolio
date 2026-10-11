@@ -16,6 +16,6 @@ p, a{
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-160%);
+    transform: translateX(-50%);
   }
 }

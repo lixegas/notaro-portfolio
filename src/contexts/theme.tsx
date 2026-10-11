@@ -1,10 +1,9 @@
 "use client";
 
 import {createContext, ReactNode, useCallback, useContext, useEffect, useState} from "react";
+import {THEME_DARK, THEME_STORAGE_KEY} from "@/constants/theme";
 
 type Theme = "dark" | "light";
-
-const THEME_DARK = "dark";
 
 
 interface ThemeContextProps {
@@ -23,49 +22,52 @@ function useThemeContext() {
   return ctx;
 }
 
+function readStoredTheme(): Theme | null {
+  try {
+    const stored = localStorage.getItem(THEME_STORAGE_KEY);
+    return stored === "dark" || stored === "light" ? stored : null;
+  } catch {
+    return null;
+  }
+}
+
 function ThemeContextProvider({children}: {children: ReactNode | ReactNode[]}){
   const [theme, m_SetTheme] = useState<Theme>("dark");
 
   const setTheme = useCallback((theme: Theme) => {
     m_SetTheme(theme);
-
-    if(theme === "dark") {
-      document.documentElement.classList.add(THEME_DARK);
-      return;
-    }
-    document.documentElement.classList.remove(THEME_DARK);
+    document.documentElement.classList.toggle(THEME_DARK, theme === "dark");
   }, [m_SetTheme]);
 
   const handleThemeChange = useCallback((ev: MediaQueryListEvent) => {
-    if(ev.matches) {
-      setTheme("dark");
+    // A theme picked with the toggle wins over the system one.
+    if(readStoredTheme()) {
       return;
     }
-    setTheme("light");
+    setTheme(ev.matches ? "dark" : "light");
   }, [setTheme]);
 
   useEffect(() => {
+    // THEME_INIT_SCRIPT already applied the right class before the first paint: just sync the state with it.
+    m_SetTheme(document.documentElement.classList.contains(THEME_DARK) ? "dark" : "light");
+
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-
-    if(mediaQuery.matches) {
-      setTheme("dark");
-    } else {
-      setTheme("light");
-    }
-
     mediaQuery.addEventListener("change", handleThemeChange);
 
     return () => {
       mediaQuery.removeEventListener("change", handleThemeChange);
     }
-  }, [setTheme, handleThemeChange]);
+  }, [handleThemeChange]);
 
   const toggleTheme = useCallback(() => {
-    if(theme === "dark") {
-      setTheme("light");
-      return;
+    const nextTheme: Theme = theme === "dark" ? "light" : "dark";
+    setTheme(nextTheme);
+
+    try {
+      localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+    } catch {
+      // Storage unavailable (e.g. blocked site data): the choice just won't persist.
     }
-    setTheme("dark");
   }, [theme, setTheme]);
 
   return (

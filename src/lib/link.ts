@@ -1,13 +1,13 @@
 
 function onLocalLinkClick(event: React.SyntheticEvent) {
+  const anchor = (event.target as HTMLElement).closest("a");
+  const href = anchor?.getAttribute("href");
+  if (!href?.startsWith("#")) {
+    return;
+  }
+
   event.preventDefault();
-  const target = event.target as HTMLAnchorElement;
-  const id = target.getAttribute("href")?.replace("#", "");
-  console.log(id)
-  const element = document.getElementById(String(id));
-  element?.scrollIntoView({
-    behavior: "smooth"
-  })
+  onDirectLocalLinkClick(href);
 }
 
 function onDirectLocalLinkClick(to: string) {

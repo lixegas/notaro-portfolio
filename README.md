@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Peppino Notaro — Portfolio
 
-## Getting Started
+Portfolio personale single-page, pubblicato su GitHub Pages: <https://lixegas.github.io/notaro-portfolio/>
 
-First, run the development server:
+Realizzato con Next.js 15 (App Router, export statico), React 19, TypeScript e Tailwind CSS v4.
+
+## Sviluppo
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev     # http://localhost:3000
+npm run build   # export statico in ./dist
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Struttura
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Percorso | Contenuto |
+| --- | --- |
+| `src/app/` | Layout, pagina principale, 404, `robots.txt`, `sitemap.xml`, immagini Open Graph |
+| `src/components/` | Sezioni della pagina: navbar, home, lavori, recensioni, contatti, footer |
+| `src/static/content/` | **Tutti i testi e i dati** (progetti, recensioni, contatti, tecnologie) |
+| `src/lib/` | `formatText` e helper per lo scroll alle sezioni |
+| `src/contexts/theme.tsx` | Tema chiaro/scuro |
+| `src/ui/` | Componenti UI riutilizzabili |
+| `public/` | Immagini e `curriculum.pdf` |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Modificare i contenuti
 
-## Learn More
+I testi si modificano nei file `src/static/content/*.content.ts`, senza toccare i componenti.
+Racchiudere una parola tra `**` la evidenzia in giallo: `"Ciao, sono **Peppino**"`.
 
-To learn more about Next.js, take a look at the following resources:
+Per aggiungere un progetto basta inserire un elemento in `works.content.ts` e mettere l'immagine
+(preferibilmente `.webp`) in `public/images/`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deploy
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Ogni push su `main` avvia il workflow `.github/workflows/nextjs.yml`, che esegue la build e pubblica `./dist` su GitHub Pages.
+In produzione il sito è servito sotto il `basePath` `/notaro-portfolio` (vedi `next.config.mjs`).
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+L'URL pubblico usato per metadata, sitemap e robots è definito in `src/constants/common.ts`.

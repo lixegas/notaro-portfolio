@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import {ThemeContextProvider} from "@/contexts/theme";
-import {BASE_URL} from "@/constants/common";
+import {SITE_ORIGIN} from "@/constants/common";
+import {THEME_INIT_SCRIPT} from "@/constants/theme";
 import "./globals.css";
 import React from "react";
 
@@ -11,12 +12,12 @@ const inter = Inter({
 });
 
 const defaultTitle = "Peppino Notaro"
-const defaultDescription = "Peppino Notaro's portfolio."
+const defaultDescription = "Portfolio di Peppino Notaro, sviluppatore Fullstack."
 
 export const metadata: Metadata = {
   title: defaultTitle,
   description: defaultDescription,
-  metadataBase: new URL(BASE_URL || 'https://lixegas.github.io/portfolio/'),
+  metadataBase: new URL(SITE_ORIGIN),
   twitter: {
     title: defaultTitle,
     description: defaultDescription
@@ -33,7 +34,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="it" className="dark" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{__html: THEME_INIT_SCRIPT}}/>
+      </head>
       <body
         className={`${inter.className} antialiased bg-white dark:bg-neutral-950 duration-200`}
       >

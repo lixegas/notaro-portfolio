@@ -10,7 +10,7 @@ export default function Home() {
       <div className="w-full max-w-7xl lg:h-[calc(100vh-64px)] gap-8 2xl:gap-0 flex flex-col lg:flex-row">
         <div className="w-full 2xl:w-1/2 h-full flex items-center">
           <div className="space-y-6">
-            <p className="text-6xl font-bold t whitespace-pre-line">{formatText(HOME_CONTENT.title)} </p>
+            <p className="text-6xl font-bold whitespace-pre-line">{formatText(HOME_CONTENT.title)} </p>
             <p className="text-lg font-light">{formatText(HOME_CONTENT.description)}</p>
             <HomeButtons/>
             <div className="flex gap-3 justify-center lg:justify-start">
@@ -33,7 +33,7 @@ export default function Home() {
         </div>
         <div className="w-full lg:w-1/2 h-full flex items-center justify-center lg:justify-end">
           <div className="rounded-full border-yellow-500 border-2 bg-yellow-300/10 p-3">
-            <Image className="rounded-full" width={450} height={450} alt="" src={"images/logo.jpg"}/>
+            <Image className="rounded-full" width={450} height={450} alt="Foto di Peppino Notaro" src={"images/logo.jpg"}/>
           </div>
         </div>
       </div>

@@ -30,13 +30,16 @@ function ProjectCard({ work }: { work: Work }) {
       <div className="rounded-t-md overflow-hidden h-64 group relative duration-200">
         <div className={`
           absolute opacity-0 group-hover:opacity-100 w-full h-full z-20 
-          bg-neutral-900/40 backdrop-blur-xs duration-200 flex items-center justify-center gap-4`
+          bg-neutral-900/40 backdrop-blur-xs duration-200 flex items-center justify-center gap-4
+          pointer-coarse:opacity-100 pointer-coarse:bg-transparent pointer-coarse:backdrop-blur-none
+          pointer-coarse:items-end pointer-coarse:justify-end pointer-coarse:p-3`
         }>
           {work.hrefTo && (
             <a
               href={work.hrefTo}
+              aria-label={`Apri ${work.title}`}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="bg-yellow-500 hover:bg-yellow-600 duration-200 p-2 rounded-full cursor-pointer"
             >
               <FaLink className="text-white w-6 h-6" />
@@ -45,6 +48,7 @@ function ProjectCard({ work }: { work: Work }) {
           {work.githubTo && (
             <a
               href={work.githubTo}
+              aria-label={`Codice di ${work.title} su GitHub`}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-yellow-500 hover:bg-yellow-600 duration-200 p-2 rounded-full cursor-pointer"

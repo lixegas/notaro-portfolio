@@ -22,28 +22,28 @@ const WORK_CONTENT: WorkContent = {
       title: "Ecommerce",
       description: "Progettazione di un ecommerce con architettura a microservizi per garantire scalabilità, mantenibilità e gestione di grandi volumi di dati. Implementato un sistema di autenticazione e autorizzazione, comunicazione asincrona tra i microservizi, ottimizzazione della latenza e gestione efficiente dei dati e dei file.",
       githubTo: "https://github.com/lixegas/ecommerce",
-      image: "images/ecommerce.png",
+      image: "images/ecommerce.webp",
       technologies: ["Java", "Spring Boot", "MySQL", "MongoDB", "Kafka", "Redis", "AWS", "Docker & Kubernetes"]
     },
     {
       title: "Company management",
       description: "Applicazione gestionale monolitica progettata per ottimizzare i processi aziendali, con operazioni CRUD e gestione avanzata dei dati, migliorando le performance e l'archiviazione sicura dei file.",
       githubTo: "https://github.com/lixegas/carparts-be",
-      image: "images/carparts.png",
+      image: "images/carparts.webp",
       technologies: ["Java", "Spring Boot", "MySQL", "Redis", "AWS", "Docker"]
     },
     {
       title: "VitoBot",
       description: "VitoBot è un bot per Discord che aiuta a gestire server Minecraft auto-ospitati, monitorando l'IP del server di hosting e una lista di server Minecraft selezionati dall'amministratore.",
       githubTo: "https://github.com/ikiwq/vito-bot",
-      image: "images/vitobot1.png",
+      image: "images/vitobot1.webp",
       technologies: ["Typescript", "Discord.js"]
     },
     {
       title: "Auth system",
       description: "Sistema di autenticazione basato su token che garantisce accesso sicuro e scalabile. Gli utenti ricevono un token dopo l'accesso, da usare per accedere alle risorse protette. Il token è rinnovabile e sostituisce la gestione delle sessioni lato server.",
       githubTo: "https://github.com/lixegas/java-spring-jwt-auth",
-      image: "images/auth.png",
+      image: "images/auth.webp",
       technologies: ["Java", "Spring Security"]
     }
   ]

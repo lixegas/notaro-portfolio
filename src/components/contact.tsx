@@ -1,13 +1,5 @@
 import {formatText} from "@/lib/text";
 import {CONTACT_CONTENT} from "@/static/content/contact.content";
-import {IconType} from "react-icons"
-
-interface Contact {
-  Icon: IconType;
-  content: string;
-  href: string;
-}
-
 export default function Contact() {
 
  return (
@@ -18,7 +10,7 @@ export default function Contact() {
        </div>
        <div className="flex gap-7 lg:gap-14 items-start flex-col lg:flex-row w-full">
          <p className="whitespace-pre-wrap">{formatText(CONTACT_CONTENT.description)}</p>
-         <div className="w-1/2 space-y-4">
+         <div className="w-full lg:w-1/2 space-y-4">
            {
               CONTACT_CONTENT.contacts.map((contact) => (
                 <a
@@ -29,7 +21,7 @@ export default function Contact() {
                   rel="noopener noreferrer"
                  >
                   <contact.icon className="w-6 h-6 text-yellow-500 shrink-0"/>
-                  <p className="text-2xl font-light group-hover:underline">{contact.content}</p>
+                  <p className="text-xl sm:text-2xl font-light group-hover:underline break-all">{contact.content}</p>
                 </a>
               ))
             }
