@@ -69,6 +69,11 @@
   opacity: 0.22;
 }
 
+@media (max-width: 767px) {
+  .aurora { opacity: 0.22; }
+  .dark .aurora { opacity: 0.13; }
+}
+
 @keyframes aurora {
   0%   { transform: translate(0, 0) scale(1); }
   50%  { transform: translate(8%, -6%) scale(1.15); }

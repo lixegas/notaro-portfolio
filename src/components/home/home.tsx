@@ -11,17 +11,17 @@ function delay(ms: number) {
 
 export default function Home() {
   return (
-    <section className="relative isolate min-h-svh flex items-center overflow-hidden px-4 pt-28 pb-16" id="home" data-pointer>
+    <section className="relative isolate min-h-svh flex items-center overflow-hidden px-4 pt-24 pb-12 lg:pt-28 lg:pb-16" id="home" data-pointer>
       {/* Background, faded out at the bottom so it blends into the next section instead of being cut */}
       <div className="absolute inset-0 -z-10 pointer-events-none [mask-image:linear-gradient(to_bottom,#000_55%,transparent)]">
-        <div className="aurora w-[40rem] h-[40rem] bg-yellow-400 -top-48 -left-40"/>
-        <div className="aurora w-[34rem] h-[34rem] bg-orange-500 top-1/3 -right-40" style={{animationDelay: "-6s"}}/>
-        <div className="aurora w-[28rem] h-[28rem] bg-amber-300 -bottom-40 left-1/3" style={{animationDelay: "-12s"}}/>
+        <div className="aurora w-[22rem] h-[22rem] md:w-[40rem] md:h-[40rem] bg-yellow-400 -top-32 -left-32 md:-top-48 md:-left-40"/>
+        <div className="aurora w-[18rem] h-[18rem] md:w-[34rem] md:h-[34rem] bg-orange-500 top-1/3 -right-32 md:-right-40" style={{animationDelay: "-6s"}}/>
+        <div className="aurora hidden md:block w-[28rem] h-[28rem] bg-amber-300 -bottom-40 left-1/3" style={{animationDelay: "-12s"}}/>
         <div className="absolute inset-0 bg-grid"/>
         <div className="absolute inset-0 pointer-glow"/>
       </div>
 
-      <div className="w-full max-w-7xl mx-auto grid lg:grid-cols-[1.15fr_1fr] gap-12 lg:gap-6 items-center">
+      <div className="w-full max-w-7xl mx-auto grid lg:grid-cols-[1.15fr_1fr] gap-6 lg:gap-6 items-center">
         <div className="space-y-6 text-center lg:text-left">
           <h1 className="font-display font-bold tracking-tighter leading-[0.9]">
             <span className="intro block text-xl sm:text-2xl font-medium tracking-tight text-neutral-500 mb-2" style={delay(100)}>
@@ -66,7 +66,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="intro flex justify-center lg:justify-end" style={delay(300)}>
+        <div className="intro order-first lg:order-none flex justify-center lg:justify-end" style={delay(0)}>
           <Orbit/>
         </div>
       </div>

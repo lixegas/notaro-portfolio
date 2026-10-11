@@ -9,7 +9,7 @@ export default function Contact() {
        data-reveal
        data-pointer
        className={`
-         spotlight relative isolate overflow-hidden w-full max-w-7xl mx-auto rounded-[2.5rem] p-7 sm:p-12 lg:p-16
+         spotlight relative isolate overflow-hidden w-full max-w-7xl mx-auto rounded-[2rem] sm:rounded-[2.5rem] p-5 sm:p-12 lg:p-16
          border border-neutral-200 bg-white dark:border-white/10 dark:bg-white/[0.03]`
        }
      >
@@ -29,13 +29,13 @@ export default function Contact() {
            </p>
          </div>
 
-         <div className="grid sm:grid-cols-3 gap-4">
+         <div className="grid sm:grid-cols-3 gap-3 sm:gap-4">
            {
               CONTACT_CONTENT.contacts.map((contact, i) => (
                 <a
                   className={`
                     ${i === 0 ? "sm:col-span-3" : ""}
-                    group flex flex-col gap-5 p-4 rounded-2xl min-w-0
+                    group flex items-center sm:flex-col sm:items-stretch gap-4 sm:gap-5 p-3 sm:p-4 rounded-2xl min-w-0
                     border border-neutral-200 bg-neutral-50/80 dark:border-white/10 dark:bg-neutral-950/60 backdrop-blur
                     hover:border-yellow-400 hover:-translate-y-1 duration-300`
                   }
@@ -44,15 +44,15 @@ export default function Contact() {
                   target="_blank"
                   rel="noopener noreferrer"
                  >
-                  <span className="flex items-center justify-between">
+                  <span className="flex items-center justify-between shrink-0">
                     <span className="w-10 h-10 rounded-xl flex items-center justify-center bg-yellow-400 text-black group-hover:rotate-[-8deg] group-hover:scale-110 duration-300">
                       <contact.icon className="w-5 h-5"/>
                     </span>
-                    <FiArrowUpRight className="w-5 h-5 text-neutral-400 group-hover:text-yellow-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 duration-300"/>
+                    <FiArrowUpRight className="hidden sm:block w-5 h-5 text-neutral-400 group-hover:text-yellow-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 duration-300"/>
                   </span>
                   <span className="min-w-0">
                     <span className="block font-mono text-xs uppercase tracking-widest text-neutral-500">{contact.label}</span>
-                    <span className="block font-medium truncate">{contact.content}</span>
+                    <span className="block text-sm sm:text-base font-medium truncate">{contact.content}</span>
                   </span>
                 </a>
               ))

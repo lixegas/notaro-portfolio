@@ -28,13 +28,13 @@ function Ring({items, radius, duration, reverse}: {items: typeof RIBBON_TECHNOLO
               <div
                 title={tech.name}
                 className={`
-                  w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center
-                  bg-white border border-neutral-200 shadow-lg
+                  w-8 h-8 sm:w-10 sm:h-10 lg:w-11 lg:h-11 rounded-lg sm:rounded-xl flex items-center justify-center
+                  bg-white border border-neutral-200 shadow-md sm:shadow-lg
                   dark:bg-neutral-900/90 dark:border-white/10 dark:shadow-black/50
                   hover:scale-125 hover:border-yellow-400 duration-300`
                 }
               >
-                <tech.icon className="w-5 h-5 text-neutral-700 dark:text-neutral-200"/>
+                <tech.icon className="w-4 h-4 sm:w-5 sm:h-5 text-neutral-700 dark:text-neutral-200"/>
               </div>
             </div>
           </div>
@@ -46,7 +46,7 @@ function Ring({items, radius, duration, reverse}: {items: typeof RIBBON_TECHNOLO
 
 export default function Orbit() {
   return (
-    <div className="relative w-full max-w-[440px] aspect-square">
+    <div className="relative w-full max-w-[270px] sm:max-w-[360px] lg:max-w-[440px] aspect-square">
       {/* Glow behind the logo */}
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-1/2 h-1/2 rounded-full bg-yellow-400/30 dark:bg-yellow-400/20 blur-3xl"/>
 
