@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import {ThemeContextProvider} from "@/contexts/theme";
 import {SITE_ORIGIN} from "@/constants/common";
 import {THEME_INIT_SCRIPT} from "@/constants/theme";
@@ -8,6 +8,16 @@ import React from "react";
 
 const inter = Inter({
   variable: "--font-inter",
+  subsets: ["latin"],
+});
+
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
+  subsets: ["latin"],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
 });
 
@@ -39,7 +49,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{__html: THEME_INIT_SCRIPT}}/>
       </head>
       <body
-        className={`${inter.className} antialiased bg-white dark:bg-neutral-950 duration-200`}
+        className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} font-sans antialiased overflow-x-clip duration-300`}
       >
         <ThemeContextProvider>
           {children}

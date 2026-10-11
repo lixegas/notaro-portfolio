@@ -9,13 +9,12 @@ export default function ThemeButton() {
   const ThemeIcon = theme === "dark" ? LuMoon : LuSun;
 
   return (
-    <button 
-      className="p-3 dark:hover:bg-white/30 hover:bg-neutral-950/10 rounded-md duration-200 cursor-pointer" 
+    <button
+      className="p-2.5 rounded-full dark:hover:bg-white/10 hover:bg-neutral-900/5 duration-300 cursor-pointer"
       onClick={toggleTheme}
+      aria-label={theme === "dark" ? "Passa al tema chiaro" : "Passa al tema scuro"}
     >
-      {
-        <ThemeIcon className="w-5 h-5 dark:text-white text-black"/>
-      }
+      <ThemeIcon className="w-[18px] h-[18px]"/>
     </button>
   );
 }

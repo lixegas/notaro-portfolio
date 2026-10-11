@@ -1,19 +1,25 @@
 import Contact from "@/components/contact";
+import Effects from "@/components/effects";
 import Footer from "@/components/footer";
 import Home from "@/components/home/home";
 import Navbar from "@/components/navbar/navbar";
 import Projects from "@/components/projects";
 import Reviews from "@/components/reviews";
+import TechRibbon from "@/components/tech-ribbon";
 
 export default function Site() {
   return (
-    <div className="w-screen h-screen overflow-y-scroll overflow-x-hidden">
+    <>
+      <Effects/>
       <Navbar/>
-      <Home/>
-      <Projects/>
-      <Reviews/>
-      <Contact/>
+      <main>
+        <Home/>
+        <TechRibbon/>
+        <Projects/>
+        <Reviews/>
+        <Contact/>
+      </main>
       <Footer/>
-    </div>
+    </>
   );
 }

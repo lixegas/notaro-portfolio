@@ -6,7 +6,7 @@ function formatText(s: string) {
     if (part.startsWith('**') && part.endsWith('**')) {
       const word = part.slice(2, -2); 
       return (
-        <span key={i} className="text-yellow-500">
+        <span key={i} className="text-gradient">
           {word}
         </span>
       );

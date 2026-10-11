@@ -1,32 +1,37 @@
 import ThemeButton from "../theme-button";
-import Button from "@/ui/button";
-import { IoCodeSlash } from "react-icons/io5";
 import { FiDownload } from "react-icons/fi";
 import NavbarSections from "./navbar-sections";
-import {formatText} from "@/lib/text";
-import {NAVBAR_CONTENT} from "@/static/content/navbar.content";
 
 export default function Navbar() {
   return (
-    <header className="px-4 2xl:px-0 w-full h-16 flex items-center sticky top-0 z-50 border-b border-yellow-500/20 backdrop-blur-sm">
-      <div className="w-full max-w-7xl h-full mx-auto flex items-center justify-between">
-        <div className="flex  items-center  gap-2 text-white text-2xl font-bold">
-          <IoCodeSlash className="text-yellow-500 w-7 h-7"/>
-          <p>{formatText(NAVBAR_CONTENT.title)}</p>
-        </div>
+    <header className="fixed top-4 inset-x-0 z-50 px-4 intro" style={{"--delay": "600ms"} as React.CSSProperties}>
+      <div className={`
+        mx-auto max-w-7xl h-14 pl-5 pr-2 flex justify-between md:grid md:grid-cols-[1fr_auto_1fr] items-center rounded-full
+        border border-neutral-200/80 bg-white/70 dark:border-white/10 dark:bg-neutral-900/60
+        backdrop-blur-xl shadow-[0_8px_30px_-12px_rgb(0_0_0/0.25)]`
+      }>
+        <a href="#home" aria-label="Torna all'inizio" className="justify-self-start hover:scale-110 duration-300">
+          {/* Same gradient-tinted logo as the hero (relative mask URL keeps the basePath) */}
+          <span
+            className="logo-mark block w-6 h-9"
+            style={{maskImage: "url(images/logo-mask.png)", WebkitMaskImage: "url(images/logo-mask.png)"}}
+          />
+        </a>
         <NavbarSections/>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center justify-end gap-1">
           <ThemeButton/>
           <a
             href="curriculum.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-black! hidden lg:flex"
+            aria-label="Scarica il curriculum"
+            className={`
+              flex items-center gap-2 rounded-full px-3 sm:px-4 py-2 text-sm font-medium text-black
+              bg-gradient-to-r from-yellow-300 to-orange-400 hover:brightness-110 duration-300`
+            }
           >
-            <Button variant="FILL" className="flex items-center gap-2 px-3 py-2.5">
-              <FiDownload className="w-4 h-4"/>
-              Curriculum
-            </Button>
+            <FiDownload className="w-4 h-4"/>
+            <span className="hidden sm:inline md:hidden lg:inline">Curriculum</span>
           </a>
         </div>
       </div>

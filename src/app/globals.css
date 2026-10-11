@@ -2,20 +2,231 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-p, a{
-  @apply text-black dark:text-white;
-  @apply duration-200;
+@theme inline {
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-space-grotesk);
+  --font-mono: var(--font-jetbrains-mono);
 }
 
-.animate-scroll {
-  animation: scroll 30s linear infinite;
-}
-
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
+@layer base {
+  html {
+    scroll-behavior: smooth;
   }
-  100% {
-    transform: translateX(-50%);
+
+  body {
+    @apply bg-[#fafaf7] text-neutral-900 dark:bg-[#07070a] dark:text-neutral-100;
+  }
+
+  ::selection {
+    @apply bg-yellow-400 text-black;
+  }
+}
+
+/* ---------- Brand gradient ---------- */
+
+.text-gradient {
+  background: linear-gradient(100deg, #d97706, #ea580c 60%, #d97706);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-pan 6s linear infinite;
+}
+
+.dark .text-gradient {
+  background-image: linear-gradient(100deg, #fde047, #fb923c 60%, #fde047);
+}
+
+@keyframes gradient-pan {
+  to { background-position: 200% center; }
+}
+
+/* ---------- Backgrounds ---------- */
+
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgb(0 0 0 / 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(0 0 0 / 0.06) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 100%);
+}
+
+.dark .bg-grid {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.05) 1px, transparent 1px);
+}
+
+.aurora {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.35;
+  animation: aurora 18s ease-in-out infinite alternate;
+}
+
+.dark .aurora {
+  opacity: 0.22;
+}
+
+@keyframes aurora {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(8%, -6%) scale(1.15); }
+  100% { transform: translate(-6%, 8%) scale(0.95); }
+}
+
+/* Soft light that follows the pointer (position set by effects.tsx) */
+.pointer-glow {
+  background: radial-gradient(600px circle at var(--mx, 50%) var(--my, -200px), rgb(250 204 21 / 0.10), transparent 60%);
+}
+
+/* ---------- Spotlight cards: border + glow follow the pointer ---------- */
+
+.spotlight {
+  position: relative;
+  isolation: isolate;
+}
+
+.spotlight::before,
+.spotlight::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 300ms;
+}
+
+.spotlight::before {
+  padding: 1px;
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgb(250 204 21 / 0.9), transparent 45%);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  z-index: 2;
+}
+
+.spotlight::after {
+  background: radial-gradient(500px circle at var(--mx, 50%) var(--my, 50%), rgb(250 204 21 / 0.07), transparent 45%);
+  z-index: -1;
+}
+
+.spotlight:hover::before,
+.spotlight:hover::after {
+  opacity: 1;
+}
+
+/* ---------- Logo tinted with the brand gradient ---------- */
+
+/* mask-image is set inline by the component: a relative URL there resolves against the page, so it keeps the basePath */
+.logo-mark {
+  background: linear-gradient(160deg, #fde047, #f59e0b 50%, #ea580c);
+  mask-position: center;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+}
+
+/* ---------- Orbit around the logo ---------- */
+
+.orbit {
+  animation: spin var(--orbit-duration, 40s) linear infinite;
+}
+
+.orbit-reverse {
+  animation-direction: reverse;
+}
+
+/* Keeps the icons upright while their ring spins */
+.orbit-item {
+  animation: spin var(--orbit-duration, 40s) linear infinite reverse;
+}
+
+.orbit-reverse .orbit-item {
+  animation-direction: normal;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.conic-ring {
+  background: conic-gradient(from 0deg, transparent 0deg, #facc15 60deg, #fb923c 120deg, transparent 180deg, transparent 360deg);
+  mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px));
+  animation: spin 6s linear infinite;
+}
+
+/* ---------- Marquee ---------- */
+
+.marquee {
+  animation: marquee var(--marquee-duration, 40s) linear infinite;
+}
+
+.marquee-reverse {
+  animation-direction: reverse;
+}
+
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
+.fade-x {
+  mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+}
+
+/* ---------- Text effects ---------- */
+
+@keyframes word-in {
+  from { opacity: 0; transform: translateY(0.4em); filter: blur(6px); }
+  to   { opacity: 1; transform: none; filter: none; }
+}
+
+.word-in {
+  display: inline-block;
+  animation: word-in 500ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+/* ---------- Entrance animations ---------- */
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(28px); filter: blur(8px); }
+  to   { opacity: 1; transform: none; filter: none; }
+}
+
+/* Hero: plays on load, no JS needed */
+.intro {
+  animation: fade-up 900ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-delay: var(--delay, 0ms);
+}
+
+/*
+ * Other sections: revealed on scroll by effects.tsx. Hidden only when JS can reveal them.
+ * An animation, not a transition, so it doesn't clobber the elements' own hover transitions.
+ */
+@media (scripting: enabled) {
+  [data-reveal]:not(.is-visible) {
+    opacity: 0;
+  }
+
+  [data-reveal].is-visible {
+    animation: fade-up 900ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: var(--delay, 0ms);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+
+.float {
+  animation: float 5s ease-in-out infinite;
+  animation-delay: var(--delay, 0ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

@@ -1,48 +1,59 @@
 import { Work, WORK_CONTENT } from "@/static/content/works.content";
-import TechRibbon from "./tech-ribbon";
-import { FaGithub, FaLink } from "react-icons/fa";
-import { formatText } from "@/lib/text";
+import { FaGithub } from "react-icons/fa";
+import { FiArrowUpRight } from "react-icons/fi";
+import SectionHeading from "./section-heading";
+
+// Bento rhythm on 3 columns: wide, narrow / narrow, wide
+function isWide(i: number) {
+  return i % 4 === 0 || i % 4 === 3;
+}
 
 export default function Projects() {
   return (
-    <div className="px-4 2xl:px-0 flex items-center justify-center w-full dark:bg-neutral-950 duration-200 pt-28 pb-14 relative" id="works">
-      <TechRibbon />
-      <div className="w-full max-w-7xl flex flex-col items-center justify-center gap-7">
-        <div className="w-full">
-          <p className="text-3xl font-bold">{formatText(WORK_CONTENT.title)}</p>
-          <p className="font-extralight">{formatText(WORK_CONTENT.subtitle)}</p>
-        </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7 w-full">
+    <section className="px-4 py-20 sm:py-24 scroll-mt-16" id="works">
+      <div className="w-full max-w-7xl mx-auto flex flex-col gap-10">
+        <SectionHeading title={WORK_CONTENT.title} subtitle={WORK_CONTENT.subtitle}/>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {
-            WORK_CONTENT.works.map((work) => (
-              <ProjectCard key={work.title} work={work} />
+            WORK_CONTENT.works.map((work, i) => (
+              <ProjectCard key={work.title} work={work} index={i} />
             ))
           }
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
-function ProjectCard({ work }: { work: Work }) {
+function ProjectCard({ work, index }: { work: Work, index: number }) {
   return (
-    <div className="flex flex-col w-full">
-      <div className="rounded-t-md overflow-hidden h-64 group relative duration-200">
-        <div className={`
-          absolute opacity-0 group-hover:opacity-100 w-full h-full z-20 
-          bg-neutral-900/40 backdrop-blur-xs duration-200 flex items-center justify-center gap-4
-          pointer-coarse:opacity-100 pointer-coarse:bg-transparent pointer-coarse:backdrop-blur-none
-          pointer-coarse:items-end pointer-coarse:justify-end pointer-coarse:p-3`
-        }>
+    <article
+      data-reveal
+      style={{"--delay": `${(index % 3) * 120}ms`} as React.CSSProperties}
+      className={`
+        flex flex-col rounded-3xl overflow-hidden
+        border border-neutral-200 bg-white dark:border-white/10 dark:bg-white/[0.03]
+        ${isWide(index) ? "lg:col-span-2" : ""}`
+      }
+    >
+      <div className="relative h-52 sm:h-60 overflow-hidden">
+        <img
+          alt={`Anteprima di ${work.title}`}
+          className="w-full h-full object-cover"
+          src={work.image}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/20 dark:from-[#0c0c0f] dark:via-[#0c0c0f]/30 to-transparent"/>
+
+        <div className="absolute top-4 right-4 flex gap-2">
           {work.hrefTo && (
             <a
               href={work.hrefTo}
               aria-label={`Apri ${work.title}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-yellow-500 hover:bg-yellow-600 duration-200 p-2 rounded-full cursor-pointer"
+              className="p-2 rounded-full bg-black/60 text-white backdrop-blur hover:bg-yellow-400 hover:text-black duration-300"
             >
-              <FaLink className="text-white w-6 h-6" />
+              <FiArrowUpRight className="w-4 h-4" />
             </a>
           )}
           {work.githubTo && (
@@ -51,34 +62,32 @@ function ProjectCard({ work }: { work: Work }) {
               aria-label={`Codice di ${work.title} su GitHub`}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-yellow-500 hover:bg-yellow-600 duration-200 p-2 rounded-full cursor-pointer"
+              className="p-2 rounded-full bg-black/60 text-white backdrop-blur hover:bg-yellow-400 hover:text-black duration-300"
             >
-              <FaGithub className="text-white w-6 h-6" />
+              <FaGithub className="w-4 h-4" />
             </a>
           )}
         </div>
-        <img
-          alt={`Image for ${work.title}`}
-          className="rounded-t-md w-full h-full object-cover"
-          src={work.image}
-        />
       </div>
-      <div className="space-y-3 dark:bg-neutral-900 bg-neutral-100 rounded-b-md p-4 duration-200">
-        <p className="font-bold text-lg">{work.title}</p>
-        <p className="text-neutral-700! dark:text-neutral-300! text-sm">{work.description}</p>
-        <div className="flex gap-2 flex-wrap">
+
+      <div className="flex flex-col gap-4 p-6 pt-2 flex-1">
+        <h3 className="font-display text-xl font-bold tracking-tight">
+          {work.title}
+        </h3>
+        <p className="text-neutral-600 dark:text-neutral-400 text-sm leading-relaxed">{work.description}</p>
+        <div className="flex gap-2 flex-wrap mt-auto pt-2">
           {
             work.technologies.map((technology) => (
-              <div
-                className="px-2 py-1 text-yellow-400 bg-yellow-200/30 rounded-full text-sm"
+              <span
+                className="px-3 py-1 rounded-full text-xs font-mono border border-amber-500/30 text-amber-700 bg-amber-400/10 dark:text-yellow-300 dark:border-yellow-400/20 dark:bg-yellow-400/5"
                 key={`${work.title}-${technology}`}
               >
                 {technology}
-              </div>
+              </span>
             ))
           }
         </div>
       </div>
-    </div>
+    </article>
   );
 }

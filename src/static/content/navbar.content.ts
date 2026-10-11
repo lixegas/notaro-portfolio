@@ -5,12 +5,10 @@ interface NavbarLink {
 }
 
 interface NavbarContent {
-  title: string;
   links: NavbarLink[];
 }
 
 const NAVBAR_CONTENT: NavbarContent = {
-  title: "PEPPINO **NOTARO**",
   links: [
     {
       text: "Home",

@@ -5,6 +5,7 @@ import { PiInstagramLogo } from "react-icons/pi";
 
 interface Contact {
   icon: IconType;
+  label: string;
   to: string;
   content: string;
 }
@@ -21,23 +22,27 @@ const CONTACT_CONTENT: ContactContent = {
   contacts: [
   {
     icon: MdEmail,
+    label: "Email",
     to: "mailto:peppino.tech05@gmail.com",
     content: "peppino.tech05@gmail.com"
   },
   {
     icon: FaLinkedin,
+    label: "LinkedIn",
     to: "https://www.linkedin.com/in/peppino-notaro-b3890427b/",
     content: "Peppino Notaro"
   },
   {
     icon: FaGithub,
+    label: "GitHub",
     to: "https://github.com/lixegas/",
     content: "Lixegas"
   },
   {
     icon: PiInstagramLogo,
-    to: "https://www.instagram.com/notaro.technologies/",
-    content: "@notaro.technologies"
+    label: "Instagram",
+    to: "https://www.instagram.com/peppino.notaro/",
+    content: "@peppino.notaro"
   }]
 }
 
